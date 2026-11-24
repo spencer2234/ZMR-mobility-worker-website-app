@@ -1,0 +1,10 @@
+# Keep line endings consistent between Windows and the Linux CI machine.
+* text=auto eol=lf
+
+# Scripts that must keep their platform's line endings to run.
+gradlew text eol=lf
+*.bat text eol=crlf
+
+*.jar binary
+*.png binary
+*.webp binary

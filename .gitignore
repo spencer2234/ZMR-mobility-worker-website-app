@@ -33,3 +33,13 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+# Renter data: backups exported from the app must never be committed
+zmr-backup-*.json
+*.backup.json
+
+# Release signing
+keystore.properties
+
+# Upper management built into the APK (real phone numbers and PIN hashes)
+app/src/main/assets/upper_management.txt

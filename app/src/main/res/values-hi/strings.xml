@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Hindi translation. DRAFT: these strings have not yet been checked by a native speaker.
+    Review them with the workshop worker during the Week 8 field test.
+-->
+<resources>
+
+
+    <!-- Main menu and Other page -->
+    <string name="main_register_customer">ग्राहक रजिस्टर करें</string>
+    <string name="main_renters">किरायेदार</string>
+    <string name="main_inventory">इन्वेंटरी</string>
+    <string name="main_send_data">डेटा भेजें</string>
+    <string name="main_other">अन्य</string>
+    <string name="action_home">होम</string>
+    <string name="action_add_employee_login">कर्मचारी लॉगिन जोड़ें</string>
+    <string name="action_send_manager_data">मैनेजर डेटा भेजें</string>
+    <string name="action_add_manager_login">मैनेजर लॉगिन जोड़ें</string>
+    <string name="guest_choose_view">आप कौन सा व्यू देखना चाहते हैं?</string>
+    <string name="role_ceo">उच्च प्रबंधन</string>
+    <string name="error_phone_invalid">6, 7, 8 या 9 से शुरू होने वाला 10 अंकों का भारतीय मोबाइल नंबर लिखें</string>
+
+    <!-- Rental dates and vehicles -->
+    <string name="field_rc_number">गाड़ी का रजिस्ट्रेशन (RC) नंबर</string>
+    <string name="field_end_date">वापसी की तारीख</string>
+    <string name="no_end_date">वापसी की तारीख नहीं</string>
+    <string name="error_end_before_start">वापसी की तारीख शुरुआत की तारीख से पहले है</string>
+    <string name="renter_vehicle_line">%1$s · RC %2$s</string>
+    <string name="renter_dates_line">%1$s → %2$s</string>
+    <string name="inventory_empty">अभी कोई गाड़ी नहीं है।</string>
+    <string name="inventory_free">खाली</string>
+    <string name="inventory_rented_to">%1$s को किराये पर</string>
+    <string name="inventory_rc">RC %1$s</string>
+    <string name="action_add_vehicle">गाड़ी जोड़ें</string>
+    <string name="error_vehicle_exists">ऐसा गाड़ी नंबर लिखें जो इन्वेंटरी में पहले से न हो</string>
+
+    <!-- Customers, documents, cities and weekly status -->
+    <string name="customer_renter">किरायेदार</string>
+    <string name="customer_lessee">लीज़ धारक</string>
+    <string name="field_customer_type">ग्राहक का प्रकार</string>
+    <string name="field_vehicle_model">गाड़ी का मॉडल</string>
+    <string name="field_city">शहर</string>
+    <string name="field_new_city">नए शहर का नाम</string>
+    <string name="action_add_city">शहर जोड़ें</string>
+    <string name="inventory_all_cities">सभी शहर</string>
+    <string name="field_lease_end">लीज़ खत्म होने की तारीख</string>
+    <string name="field_residual">अंत में खरीद मूल्य</string>
+    <string name="field_pending">बाकी राशि</string>
+    <string name="field_challans">बाकी चालान</string>
+    <string name="past_due_short">बकाया %1$s</string>
+    <string name="past_due_detail">बकाया: %1$s (%2$d दिन की देरी)</string>
+    <string name="action_record_rent">किराया भुगतान दर्ज करें</string>
+    <string name="field_rent_amount">भुगतान की गई राशि</string>
+    <string name="documents_title">दस्तावेज़</string>
+    <string name="documents_intro">हर दस्तावेज़ की फ़ोटो या PDF जोड़ें। इन्हें बाद में भी जोड़ सकते हैं।</string>
+    <string name="error_document_failed">यह फ़ाइल नहीं जुड़ सकी। 10 MB से छोटी फ़ाइल चुनें।</string>
+    <string name="document_type">दस्तावेज़ का प्रकार</string>
+    <string name="document_aadhaar_masked">केवल मास्क्ड आधार जोड़ें, जिसमें सिर्फ़ आखिरी 4 अंक दिखें।</string>
+    <string name="document_attached">जोड़ा गया: %1$s</string>
+    <string name="action_add_file">फ़ाइल जोड़ें</string>
+    <string name="action_replace_file">फ़ाइल बदलें</string>
+    <string name="action_continue">आगे बढ़ें</string>
+    <string name="doc_slot_photo">किरायेदार की फ़ोटो</string>
+    <string name="doc_slot_licence">ड्राइविंग लाइसेंस</string>
+    <string name="doc_slot_id">पहचान प्रमाण</string>
+    <string name="doc_slot_address">पते का प्रमाण</string>
+    <string name="doc_slot_parent_id">माता/पिता का पहचान प्रमाण</string>
+    <string name="doc_slot_parent_address">माता/पिता के पते का प्रमाण</string>
+    <string name="doc_birth_certificate">जन्म प्रमाण पत्र</string>
+    <string name="doc_school_certificate">स्कूल छोड़ने / मैट्रिक का प्रमाण पत्र</string>
+    <string name="doc_pan_card">पैन कार्ड</string>
+    <string name="doc_driving_licence">ड्राइविंग लाइसेंस</string>
+    <string name="doc_voter_id">चुनाव फ़ोटो पहचान पत्र</string>
+    <string name="doc_water_bill">पानी का बिल</string>
+    <string name="doc_telephone_bill">टेलीफ़ोन बिल (लैंडलाइन या पोस्टपेड)</string>
+    <string name="doc_electricity_bill">बिजली का बिल</string>
+    <string name="doc_income_tax">आयकर निर्धारण आदेश</string>
+    <string name="doc_gas">गैस कनेक्शन का प्रमाण</string>
+    <string name="doc_employer">लेटरहेड पर नियोक्ता का प्रमाण पत्र</string>
+    <string name="doc_spouse_passport">पति/पत्नी के पासपोर्ट की कॉपी</string>
+    <string name="doc_parent_passport">माता/पिता के पासपोर्ट की कॉपी (नाबालिग)</string>
+    <string name="doc_aadhaar">आधार कार्ड (मास्क्ड)</string>
+    <string name="doc_rent_agreement">किराया समझौता</string>
+    <string name="doc_passbook">बैंक खाते की फ़ोटो पासबुक</string>
+    <string name="settings_language">भाषा</string>
+    <string name="action_weekly_status">साप्ताहिक रिपोर्ट स्थिति</string>
+    <string name="week_range">%1$s से %2$s</string>
+    <string name="action_previous_week">पिछला</string>
+    <string name="action_next_week">अगला</string>
+    <string name="week_submitted">जमा की</string>
+    <string name="week_pending">बाकी</string>
+
+    <!-- Common actions -->
+    <string name="action_back">वापस</string>
+    <string name="action_clear_search">खोज मिटाएँ</string>
+    <string name="action_ok">ठीक है</string>
+    <string name="action_cancel">रद्द करें</string>
+    <string name="action_choose_date">तारीख चुनें</string>
+
+    <!-- Login and register -->
+    <string name="login_who">ऐप कौन इस्तेमाल कर रहा है?</string>
+    <string name="field_pin">4 अंकों का पिन</string>
+    <string name="field_pin_confirm">पिन फिर से लिखें</string>
+    <string name="action_log_in">लॉग इन करें</string>
+    <string name="action_continue_guest">मेहमान के रूप में जारी रखें</string>
+    <string name="action_log_out">लॉग आउट</string>
+    <string name="user_guest">मेहमान</string>
+    <string name="error_choose_user">अपना नाम चुनें</string>
+    <string name="error_user_name_required">अपना नाम लिखें</string>
+    <string name="error_user_name_taken">यह नाम पहले से रजिस्टर है</string>
+    <string name="error_pin_format">4 अंकों का पिन लिखें</string>
+    <string name="error_pin_mismatch">दोनों पिन एक जैसे नहीं हैं</string>
+    <string name="error_pin_wrong">गलत पिन। फिर से कोशिश करें।</string>
+
+    <!-- Accounts: Employee, Manager, CEO -->
+    <string name="role_employee">कर्मचारी</string>
+    <string name="role_manager">मैनेजर</string>
+    <string name="login_no_users">इस फ़ोन पर अभी कोई अकाउंट नहीं है। अगर आपको इनवाइट कोड मिला है, तो उससे सेट अप करें। उच्च प्रबंधन \"उच्च प्रबंधन के रूप में सेट अप करें\" पर टैप करें।</string>
+    <string name="action_setup_invite">मेरे पास इनवाइट कोड है</string>
+    <string name="action_setup_ceo">उच्च प्रबंधन के रूप में सेट अप करें</string>
+    <string name="home_logged_in_as">%1$s के रूप में लॉग इन</string>
+    <string name="home_logged_in_as_role">%1$s (%2$s) के रूप में लॉग इन</string>
+    <string name="field_employee_code">कर्मचारी ID</string>
+    <string name="field_email">ईमेल</string>
+    <string name="field_person_name">नाम</string>
+    <string name="field_area">शहर या इलाका</string>
+    <string name="error_code_invalid">EMP-102 जैसी कर्मचारी ID लिखें</string>
+    <string name="error_code_taken">यह कर्मचारी ID पहले से इस्तेमाल में है</string>
+    <string name="error_email_invalid">name@example.com जैसा ईमेल पता लिखें</string>
+    <string name="error_area_required">शहर या इलाका लिखें</string>
+    <string name="error_ceo_exists">इस फ़ोन पर पहले से उच्च प्रबंधन अकाउंट है।</string>
+
+    <!-- Set up as CEO -->
+    <string name="setup_ceo_title">उच्च प्रबंधन के रूप में सेट अप करें</string>
+    <string name="setup_ceo_intro">अपने नाम पर टैप करें और ZMR का दिया हुआ PIN डालें।</string>
+
+    <!-- Set up with an invite code -->
+    <string name="setup_invite_title">इनवाइट कोड से सेट अप करें</string>
+    <string name="setup_invite_intro">WhatsApp या ईमेल पर मिला इनवाइट मैसेज यहाँ पेस्ट करें। पूरा मैसेज पेस्ट कर सकते हैं।</string>
+    <string name="field_invite">इनवाइट कोड</string>
+    <string name="error_invite_invalid">यह इनवाइट कोड काम नहीं कर रहा। इसे फिर से भेजने के लिए कहें।</string>
+    <string name="invite_for">%1$s (%2$s) का अकाउंट</string>
+    <string name="invite_role">भूमिका: %1$s</string>
+    <string name="invite_area">इलाका: %1$s</string>
+    <string name="invite_reports_to">रिपोर्ट इन्हें जाएगी: %1$s</string>
+    <string name="setup_choose_pin">अपना 4 अंकों का पिन चुनें। लॉग इन के लिए इसी का इस्तेमाल होगा।</string>
+    <string name="action_setup">यह फ़ोन सेट अप करें</string>
+
+    <string name="team_add_intro">उन्हें अपने फ़ोन पर ऐप सेट अप करने के लिए एक इनवाइट कोड मिलेगा।</string>
+    <string name="team_area_fixed">इलाका: %1$s</string>
+    <string name="action_create_invite">इनवाइट बनाएँ</string>
+    <string name="invite_ready">%1$s के लिए इनवाइट तैयार है। इसे उन्हें भेजें ताकि वे अपने फ़ोन पर ऐप सेट अप कर सकें।</string>
+    <string name="invite_subject">आपका ZMR Rent इनवाइट</string>
+    <string name="invite_message">नमस्ते %1$s, आपको ZMR Rent ऐप में %2$s के रूप में जोड़ा गया है। ऐप खोलें, “मेरे पास इनवाइट कोड है” दबाएँ और यह पूरा मैसेज पेस्ट करें।
+
+%3$s</string>
+    <string name="action_send_whatsapp">WhatsApp से भेजें</string>
+    <string name="action_send_email">ईमेल से भेजें</string>
+    <string name="send_with">इससे भेजें</string>
+
+    <string name="report_making">Excel रिपोर्ट बन रही है…</string>
+    <string name="report_ready">आपकी Excel रिपोर्ट तैयार है:
+%1$s</string>
+    <string name="report_goes_to">इसे %1$s को भेजें: %2$s</string>
+    <string name="report_no_recipient">इस अकाउंट से कोई मैनेजर जुड़ा नहीं है। चुनें कि किसे भेजना है।</string>
+    <string name="report_add_intro_manager">आपके कर्मचारियों ने WhatsApp या ईमेल पर जो रिपोर्ट फ़ाइलें भेजी हैं, उन्हें जोड़ें। आपके अपने किरायेदार और भुगतान अपने आप शामिल हो जाते हैं।</string>
+    <string name="report_add_intro_ceo">आपके मैनेजरों ने जो टीम रिपोर्ट फ़ाइलें भेजी हैं, उन्हें जोड़ें। आपके अपने किरायेदार और भुगतान अपने आप शामिल हो जाते हैं।</string>
+    <string name="report_files_hint">फ़ाइल चुनते समय Downloads या WhatsApp → Media → WhatsApp Documents में देखें।</string>
+    <string name="action_add_files">मिली हुई रिपोर्ट जोड़ें</string>
+    <string name="report_included_header">इस रिपोर्ट में शामिल</string>
+    <string name="report_included_line">%1$s (%2$s) · बनाई %3$s</string>
+    <string name="report_missing_header">इनसे अभी रिपोर्ट नहीं मिली</string>
+    <string name="report_missing_line">%1$s (%2$s)</string>
+    <string name="report_skipped">“%1$s” ZMR रिपोर्ट नहीं है, इसलिए छोड़ दी गई।</string>
+    <string name="report_you">आप</string>
+    <string name="report_message">ZMR %1$s, %2$s (%3$s) की ओर से, %4$s</string>
+
+    <!-- First payment (deposit and advance) -->
+    <string name="payment_title">पहला भुगतान</string>
+    <string name="payment_deposit">जमा राशि (डिपॉज़िट)</string>
+    <string name="payment_advance">किराया एडवांस</string>
+    <string name="payment_total">कुल लेना है</string>
+    <string name="payment_how">किरायेदार कैसे भुगतान कर रहा है?</string>
+    <string name="method_upi">UPI QR कोड</string>
+    <string name="method_bank">बैंक ट्रांसफ़र</string>
+    <string name="method_cash">नकद</string>
+    <string name="payment_scan_hint">किरायेदार से कहें कि किसी भी UPI ऐप से यह कोड स्कैन करे और %1$s दर्ज करे। Paytm, Google Pay, PhonePe और BHIM सभी चलते हैं।</string>
+    <string name="payment_upi_payee">%1$s (%2$s) को भुगतान</string>
+    <string name="payment_bank_hint">किरायेदार से कहें कि %1$s इस खाते में भेजे:</string>
+    <string name="payment_cash_hint">नकद गिनें और किरायेदार को रसीद दें।</string>
+    <string name="payment_upi_missing">ZMR की UPI ID अभी नहीं जोड़ी गई है। संस्थापक इसे भुगतान की जानकारी (होम स्क्रीन पर गियर) में जोड़ सकते हैं।</string>
+    <string name="payment_bank_missing">ZMR का बैंक खाता अभी नहीं जोड़ा गया है। संस्थापक इसे भुगतान की जानकारी (होम स्क्रीन पर गियर) में जोड़ सकते हैं।</string>
+    <string name="bank_account_name">खाताधारक का नाम</string>
+    <string name="bank_account_number">खाता नंबर</string>
+    <string name="bank_ifsc">IFSC कोड</string>
+    <string name="bank_name">बैंक</string>
+    <string name="field_reference_upi">UPI ट्रांज़ैक्शन ID (UTR)</string>
+    <string name="field_reference_bank">बैंक रेफ़रेंस नंबर (UTR)</string>
+    <string name="field_reference_cash">रसीद नंबर</string>
+    <string name="reference_hint_upi">भुगतान के बाद किरायेदार के फ़ोन पर दिखता है</string>
+    <string name="error_reference_required">रेफ़रेंस नंबर लिखें</string>
+    <string name="error_method_required">भुगतान का तरीका चुनें</string>
+    <string name="action_payment_received">भुगतान मिल गया</string>
+    <string name="action_collect_later">बाद में लें</string>
+    <string name="action_done">हो गया</string>
+    <string name="payment_saved">भुगतान सेव हो गया</string>
+    <string name="payment_already_recorded">पहला भुगतान पहले ही दर्ज हो चुका है।</string>
+    <string name="payment_recorded_line">%1$s · %2$s · %3$s</string>
+    <string name="payment_recorded_detail">रेफ़रेंस %1$s · %2$s ने दर्ज किया, %3$s</string>
+
+    <!-- Payment details (founder settings) -->
+    <string name="action_settings">भुगतान की जानकारी</string>
+    <string name="settings_title">भुगतान की जानकारी</string>
+    <string name="settings_intro">किरायेदार पैसे कहाँ भेजें। UPI, बैंक खाता या दोनों भरें।</string>
+    <string name="settings_upi_section">UPI</string>
+    <string name="field_upi_id">ZMR की UPI ID</string>
+    <string name="field_payee_name">भुगतान में दिखने वाला नाम</string>
+    <string name="settings_bank_section">बैंक खाता</string>
+    <string name="settings_amounts_section">पहले भुगतान की राशि</string>
+    <string name="error_upi_invalid">zmrmobility@ptaxis जैसी UPI ID लिखें</string>
+    <string name="error_payee_name_required">किरायेदार को दिखने वाला नाम लिखें</string>
+    <string name="error_account_name_required">खाताधारक का नाम लिखें</string>
+    <string name="error_account_invalid">9 से 18 अंकों का खाता नंबर लिखें</string>
+    <string name="error_ifsc_invalid">SBIN0001234 जैसा 11 अक्षरों का IFSC कोड लिखें</string>
+    <string name="error_amount_invalid">राशि लिखें</string>
+    <string name="action_save_settings">जानकारी सेव करें</string>
+    <string name="settings_saved">भुगतान की जानकारी सेव हो गई</string>
+
+    <!-- All renters -->
+    <string name="renters_title">किरायेदार</string>
+    <string name="renters_search_hint">नाम, फ़ोन या गाड़ी नंबर खोजें</string>
+    <string name="renters_empty_title">अभी कोई किरायेदार नहीं है</string>
+    <string name="renters_empty_body">किराया दर्ज करने के लिए पहला किरायेदार जोड़ें।</string>
+    <string name="renters_no_match">“%1$s” से कोई किरायेदार नहीं मिला</string>
+    <string name="renter_rent_line">%1$s · %2$s / सप्ताह</string>
+
+    <!-- Add / edit renter -->
+    <string name="add_renter_title">किरायेदार जोड़ें</string>
+    <string name="edit_renter_title">किरायेदार बदलें</string>
+    <string name="field_name">किरायेदार का नाम</string>
+    <string name="field_phone">मोबाइल नंबर</string>
+    <string name="field_vehicle">गाड़ी नंबर</string>
+    <string name="field_start_date">किराये की शुरुआत की तारीख</string>
+    <string name="rent_due_every">किराया हर %1$s को देना है</string>
+    <string name="field_weekly_rent">साप्ताहिक किराया</string>
+    <string name="field_status">स्थिति</string>
+    <string name="field_hold_reason">होल्ड का कारण</string>
+    <string name="action_save_renter">किरायेदार सेव करें</string>
+    <string name="action_save_changes">बदलाव सेव करें</string>
+    <string name="renter_saved">किरायेदार सेव हो गया</string>
+    <string name="renter_not_found">यह किरायेदार नहीं मिला।</string>
+
+    <!-- Form errors -->
+    <string name="error_name_required">किरायेदार का नाम लिखें</string>
+    <string name="error_vehicle_invalid">गाड़ी नंबर लिखें</string>
+    <string name="error_vehicle_taken">यह गाड़ी पहले से किसी और किरायेदार के नाम है</string>
+    <string name="error_rent_invalid">साप्ताहिक किराया लिखें</string>
+    <string name="error_hold_reason_required">कारण चुनें</string>
+    <string name="error_save_failed">सेव नहीं हो सका। फिर से कोशिश करें।</string>
+
+    <!-- Renter status -->
+    <string name="status_active">चालू</string>
+    <string name="status_on_hold">होल्ड पर</string>
+
+    <!-- Reasons a vehicle is on hold -->
+    <string name="hold_reason_missed_payments">किराया बाकी</string>
+    <string name="hold_reason_repair">मरम्मत</string>
+    <string name="hold_reason_returned">गाड़ी वापस</string>
+    <string name="hold_reason_other">अन्य</string>
+
+    <!-- Rent day chips -->
+    <string name="day_mon">सोम</string>
+    <string name="day_tue">मंगल</string>
+    <string name="day_wed">बुध</string>
+    <string name="day_thu">गुरु</string>
+    <string name="day_fri">शुक्र</string>
+    <string name="day_sat">शनि</string>
+    <string name="day_sun">रवि</string>
+    <string name="setup_no_leaders">ऐप की इस कॉपी में कोई उच्च प्रबंधन अकाउंट नहीं है।</string>
+    <string name="settings_my_email">मेरा ईमेल</string>
+    <string name="my_email_intro">आपकी भेजी रिपोर्ट और इनवाइट में यह ईमेल जाता है।</string>
+    <string name="action_save_email">ईमेल सेव करें</string>
+    <string name="my_email_saved">ईमेल सेव हो गया।</string>
+</resources>
