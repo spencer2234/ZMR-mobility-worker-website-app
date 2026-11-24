@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lint>
+    <!--
+        Lint suggests renaming this folder to mipmap-anydpi because minSdk is 26, but the
+        resource linker then fails to find the adaptive launcher icon. Keep the -v26 folder.
+    -->
+    <issue id="ObsoleteSdkInt">
+        <ignore path="src/main/res/mipmap-anydpi-v26" />
+    </issue>
+</lint>

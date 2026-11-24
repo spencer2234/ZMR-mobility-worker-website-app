@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Every word the worker sees lives in this file, so the app can be translated without code
+    changes. When a string is added here, add it to values-hi/strings.xml as well.
+-->
+<resources>
+    <string name="app_name" translatable="false">ZMR Rent</string>
+
+
+
+    <!-- Main menu and Other page -->
+    <string name="main_register_customer">Register customer</string>
+    <string name="main_renters">Renters</string>
+    <string name="main_inventory">Inventory</string>
+    <string name="main_send_data">Send data</string>
+    <string name="main_other">Other</string>
+    <string name="action_home">Home</string>
+    <string name="action_add_employee_login">Add employee login info</string>
+    <string name="action_send_manager_data">Send manager data</string>
+    <string name="action_add_manager_login">Add manager login</string>
+    <string name="guest_choose_view">Which view do you want to see?</string>
+    <string name="role_ceo">Upper management</string>
+    <string name="error_phone_invalid">Enter a 10-digit Indian mobile number starting with 6, 7, 8 or 9</string>
+
+    <!-- Rental dates and vehicles -->
+    <string name="field_rc_number">Vehicle registration (RC) number</string>
+    <string name="field_end_date">Return date</string>
+    <string name="no_end_date">No return date</string>
+    <string name="error_end_before_start">The return date is before the start date</string>
+    <!-- Example: "DL1SAB1234 · RC DL01AB2020" -->
+    <string name="renter_vehicle_line">%1$s · RC %2$s</string>
+    <!-- Example: "02-11-2026 → 30-11-2026" -->
+    <string name="renter_dates_line">%1$s → %2$s</string>
+    <string name="inventory_empty">No vehicles yet.</string>
+    <string name="inventory_free">Free</string>
+    <string name="inventory_rented_to">Rented to %1$s</string>
+    <string name="inventory_rc">RC %1$s</string>
+    <string name="action_add_vehicle">Add vehicle</string>
+    <string name="error_vehicle_exists">Enter a vehicle number that is not already in the inventory</string>
+
+    <!-- Customers, documents, cities and weekly status -->
+    <string name="customer_renter">Renter</string>
+    <string name="customer_lessee">Lessee</string>
+    <string name="field_customer_type">Customer type</string>
+    <string name="field_vehicle_model">Vehicle model</string>
+    <string name="field_city">City</string>
+    <string name="field_new_city">New city name</string>
+    <string name="action_add_city">Add city</string>
+    <string name="inventory_all_cities">All cities</string>
+    <string name="field_lease_end">Lease end date</string>
+    <string name="field_residual">Residual purchase value</string>
+    <string name="field_pending">Pending amount</string>
+    <string name="field_challans">Pending challans</string>
+    <string name="past_due_short">Due %1$s</string>
+    <string name="past_due_detail">Past due: %1$s · Days late: %2$d</string>
+    <string name="action_record_rent">Record rent payment</string>
+    <string name="field_rent_amount">Amount paid</string>
+    <string name="documents_title">Documents</string>
+    <string name="documents_intro">Attach a photo or PDF of each document. You can add them later.</string>
+    <string name="error_document_failed">Could not attach this file. Use a file under 10 MB.</string>
+    <string name="document_type">Document type</string>
+    <string name="document_aadhaar_masked">Attach a masked Aadhaar only, showing just the last 4 digits.</string>
+    <string name="document_attached">Attached: %1$s</string>
+    <string name="action_add_file">Add file</string>
+    <string name="action_replace_file">Replace file</string>
+    <string name="action_continue">Continue</string>
+    <string name="doc_slot_photo">Renter’s photograph</string>
+    <string name="doc_slot_licence">Driving licence</string>
+    <string name="doc_slot_id">Identity proof</string>
+    <string name="doc_slot_address">Address proof</string>
+    <string name="doc_slot_parent_id">Parent’s ID proof</string>
+    <string name="doc_slot_parent_address">Parent’s address proof</string>
+    <string name="doc_birth_certificate">Birth certificate</string>
+    <string name="doc_school_certificate">School leaving / matriculation certificate</string>
+    <string name="doc_pan_card">PAN card</string>
+    <string name="doc_driving_licence">Driving licence</string>
+    <string name="doc_voter_id">Election photo ID card</string>
+    <string name="doc_water_bill">Water bill</string>
+    <string name="doc_telephone_bill">Telephone bill (landline or postpaid)</string>
+    <string name="doc_electricity_bill">Electricity bill</string>
+    <string name="doc_income_tax">Income tax assessment order</string>
+    <string name="doc_gas">Proof of gas connection</string>
+    <string name="doc_employer">Employer certificate on letterhead</string>
+    <string name="doc_spouse_passport">Spouse’s passport copy</string>
+    <string name="doc_parent_passport">Parent’s passport copy (minors)</string>
+    <string name="doc_aadhaar">Aadhaar card (masked)</string>
+    <string name="doc_rent_agreement">Rent agreement</string>
+    <string name="doc_passbook">Photo passbook of bank account</string>
+    <string name="settings_language">Language</string>
+    <string name="action_weekly_status">Weekly report status</string>
+    <string name="week_range">%1$s to %2$s</string>
+    <string name="action_previous_week">Previous</string>
+    <string name="action_next_week">Next</string>
+    <string name="week_submitted">Submitted</string>
+    <string name="week_pending">Pending</string>
+
+    <!-- Common actions -->
+    <string name="action_back">Back</string>
+    <string name="action_clear_search">Clear search</string>
+    <string name="action_ok">OK</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_choose_date">Choose date</string>
+
+    <!-- Login and register -->
+    <string name="login_who">Who is using the app?</string>
+    <string name="field_pin">4-digit PIN</string>
+    <string name="field_pin_confirm">Enter the PIN again</string>
+    <string name="action_log_in">Log in</string>
+    <string name="action_continue_guest">Continue as guest</string>
+    <string name="action_log_out">Log out</string>
+    <string name="user_guest">Guest</string>
+    <string name="error_choose_user">Choose your name</string>
+    <string name="error_user_name_required">Enter your name</string>
+    <string name="error_user_name_taken">This name is already registered</string>
+    <string name="error_pin_format">Enter a 4-digit PIN</string>
+    <string name="error_pin_mismatch">The two PINs are not the same</string>
+    <string name="error_pin_wrong">Wrong PIN. Try again.</string>
+
+    <!-- Accounts: Employee, Manager, CEO -->
+    <string name="role_employee">Employee</string>
+    <string name="role_manager">Manager</string>
+    <string name="login_no_users">No accounts on this phone yet. If you were sent an invite code, use it to set up. Upper management taps Set up as upper management.</string>
+    <string name="action_setup_invite">I have an invite code</string>
+    <string name="action_setup_ceo">Set up as upper management</string>
+    <!-- Example: "Logged in as Ravi (Employee)" -->
+    <string name="home_logged_in_as">Logged in as %1$s</string>
+    <string name="home_logged_in_as_role">Logged in as %1$s (%2$s)</string>
+    <string name="field_employee_code">Employee ID</string>
+    <string name="field_email">Email</string>
+    <string name="field_person_name">Name</string>
+    <string name="field_area">City or area</string>
+    <string name="error_code_invalid">Enter an employee ID, like EMP-102</string>
+    <string name="error_code_taken">This employee ID is already in use</string>
+    <string name="error_email_invalid">Enter an email address, like name@example.com</string>
+    <string name="error_area_required">Enter the city or area</string>
+    <string name="error_ceo_exists">This phone already has an upper management account.</string>
+
+    <!-- Set up as CEO -->
+    <string name="setup_ceo_title">Set up as upper management</string>
+    <string name="setup_ceo_intro">Tap your name and type the PIN ZMR gave you.</string>
+
+    <!-- Set up with an invite code -->
+    <string name="setup_invite_title">Set up with invite code</string>
+    <string name="setup_invite_intro">Paste the invite message you were sent on WhatsApp or by email. You can paste the whole message.</string>
+    <string name="field_invite">Invite code</string>
+    <string name="error_invite_invalid">This is not a working invite code. Ask for it to be sent again.</string>
+    <!-- Example: "Account for Ravi Kumar (EMP-102)" -->
+    <string name="invite_for">Account for %1$s (%2$s)</string>
+    <string name="invite_role">Role: %1$s</string>
+    <string name="invite_area">Area: %1$s</string>
+    <string name="invite_reports_to">Reports go to: %1$s</string>
+    <string name="setup_choose_pin">Choose your own 4-digit PIN. You will use it to log in.</string>
+    <string name="action_setup">Set up this phone</string>
+
+    <string name="team_add_intro">They will get an invite code to set up the app on their own phone.</string>
+    <!-- Example: "Employees are added to your area: Lucknow" -->
+    <string name="team_area_fixed">Area: %1$s</string>
+    <string name="action_create_invite">Create invite</string>
+    <string name="invite_ready">Invite ready for %1$s. Send it to them so they can set up the app on their phone.</string>
+    <string name="invite_subject">Your ZMR Rent invite</string>
+    <!-- The message sent to a new person. %3$s is the invite code. -->
+    <string name="invite_message">Hello %1$s, you have been added to the ZMR Rent app as %2$s. Open the app, tap “I have an invite code” and paste this whole message.
+
+%3$s</string>
+    <string name="action_send_whatsapp">Send by WhatsApp</string>
+    <string name="action_send_email">Send by email</string>
+    <string name="send_with">Send with</string>
+
+    <string name="report_making">Making the Excel report…</string>
+    <!-- Example: "Your report for 02-11-2026 is ready: ZMR-Employee-report-EMP-102-2026-11-02.xlsx" -->
+    <string name="report_ready">Your Excel report is ready:
+%1$s</string>
+    <!-- Example: "It goes to Suresh (Manager): +91 98765 43210, suresh@example.com" -->
+    <string name="report_goes_to">Send it to %1$s: %2$s</string>
+    <string name="report_no_recipient">No manager is linked to this account. Choose who to send it to.</string>
+    <string name="report_add_intro_manager">Add the report files your employees sent you on WhatsApp or by email. Your own renters and payments are included automatically.</string>
+    <string name="report_add_intro_ceo">Add the team report files your managers sent you. Your own renters and payments are included automatically.</string>
+    <string name="report_files_hint">In the file picker, look in Downloads or in WhatsApp → Media → WhatsApp Documents.</string>
+    <string name="action_add_files">Add received reports</string>
+    <string name="report_included_header">Included in this report</string>
+    <!-- Example: "Ravi Kumar (EMP-102) · made 02-11-2026 18:30" -->
+    <string name="report_included_line">%1$s (%2$s) · made %3$s</string>
+    <string name="report_missing_header">No report received yet from</string>
+    <string name="report_missing_line">%1$s (%2$s)</string>
+    <string name="report_skipped">“%1$s” is not a ZMR report, so it was skipped.</string>
+    <string name="report_you">you</string>
+    <!-- Text sent with a report file. Example: "ZMR Employee report from Ravi Kumar (EMP-102), 02-11-2026" -->
+    <string name="report_message">ZMR %1$s from %2$s (%3$s), %4$s</string>
+
+    <!-- First payment (deposit and advance) -->
+    <string name="payment_title">First payment</string>
+    <string name="payment_deposit">Deposit</string>
+    <string name="payment_advance">Rent advance</string>
+    <string name="payment_total">Total to collect</string>
+    <string name="payment_how">How is the renter paying?</string>
+    <string name="method_upi">UPI QR code</string>
+    <string name="method_bank">Bank transfer</string>
+    <string name="method_cash">Cash</string>
+    <string name="payment_scan_hint">Ask the renter to scan this code with any UPI app and enter %1$s. Paytm, Google Pay, PhonePe and BHIM all work.</string>
+    <!-- Example: "Paying to zmrmobility@ptaxis (ZMR Mobility)" -->
+    <string name="payment_upi_payee">Paying to %1$s (%2$s)</string>
+    <!-- Example: "Ask the renter to send ₹3,400 to this account:" -->
+    <string name="payment_bank_hint">Ask the renter to send %1$s to this account:</string>
+    <string name="payment_cash_hint">Count the cash and give the renter a receipt.</string>
+    <string name="payment_upi_missing">ZMR’s UPI ID has not been added yet. The founder can add it in Payment details (the gear on the home screen).</string>
+    <string name="payment_bank_missing">ZMR’s bank account has not been added yet. The founder can add it in Payment details (the gear on the home screen).</string>
+    <string name="bank_account_name">Account name</string>
+    <string name="bank_account_number">Account number</string>
+    <string name="bank_ifsc">IFSC code</string>
+    <string name="bank_name">Bank</string>
+    <string name="field_reference_upi">UPI transaction ID (UTR)</string>
+    <string name="field_reference_bank">Bank reference number (UTR)</string>
+    <string name="field_reference_cash">Receipt number</string>
+    <string name="reference_hint_upi">Shown on the renter’s phone after they pay</string>
+    <string name="error_reference_required">Enter the reference number</string>
+    <string name="error_method_required">Choose how the renter paid</string>
+    <string name="action_payment_received">Payment received</string>
+    <string name="action_collect_later">Collect later</string>
+    <string name="action_done">Done</string>
+    <string name="payment_saved">Payment saved</string>
+    <string name="payment_already_recorded">The first payment has already been recorded.</string>
+    <!-- Example: "Deposit · ₹2,000 · UPI QR code" -->
+    <string name="payment_recorded_line">%1$s · %2$s · %3$s</string>
+    <!-- Example: "Reference 412345678901 · entered by Imran, 18 Oct 2026, 10:30" -->
+    <string name="payment_recorded_detail">Reference %1$s · entered by %2$s, %3$s</string>
+
+    <!-- Payment details (founder settings) -->
+    <string name="action_settings">Payment details</string>
+    <string name="settings_title">Payment details</string>
+    <string name="settings_intro">Where renters send money. Fill in UPI, a bank account, or both.</string>
+    <string name="settings_upi_section">UPI</string>
+    <string name="field_upi_id">ZMR’s UPI ID</string>
+    <string name="field_payee_name">Name renters see when paying</string>
+    <string name="settings_bank_section">Bank account</string>
+    <string name="settings_amounts_section">First payment amounts</string>
+    <string name="error_upi_invalid">Enter a UPI ID like zmrmobility@ptaxis</string>
+    <string name="error_payee_name_required">Enter the name renters will see</string>
+    <string name="error_account_name_required">Enter the account holder’s name</string>
+    <string name="error_account_invalid">Enter a 9 to 18 digit account number</string>
+    <string name="error_ifsc_invalid">Enter an 11-character IFSC code, like SBIN0001234</string>
+    <string name="error_amount_invalid">Enter an amount</string>
+    <string name="action_save_settings">Save details</string>
+    <string name="settings_saved">Payment details saved</string>
+
+    <!-- All renters -->
+    <string name="renters_title">Renters</string>
+    <string name="renters_search_hint">Search name, phone or vehicle</string>
+    <string name="renters_empty_title">No renters yet</string>
+    <string name="renters_empty_body">Add the first renter to start tracking rent.</string>
+    <string name="renters_no_match">No renter matches “%1$s”</string>
+    <!-- Example: "Mon · ₹1,400 / week" -->
+    <string name="renter_rent_line">%1$s · %2$s / week</string>
+
+    <!-- Add / edit renter -->
+    <string name="add_renter_title">Add renter</string>
+    <string name="edit_renter_title">Edit renter</string>
+    <string name="field_name">Renter name</string>
+    <string name="field_phone">Mobile number</string>
+    <string name="field_vehicle">Vehicle number</string>
+    <string name="field_start_date">Rental start date</string>
+    <!-- Example: "Rent is due every Saturday" -->
+    <string name="rent_due_every">Rent is due every %1$s</string>
+    <string name="field_weekly_rent">Weekly rent</string>
+    <string name="field_status">Status</string>
+    <string name="field_hold_reason">Reason for hold</string>
+    <string name="action_save_renter">Save renter</string>
+    <string name="action_save_changes">Save changes</string>
+    <string name="renter_saved">Renter saved</string>
+    <string name="renter_not_found">This renter could not be found.</string>
+
+    <!-- Form errors -->
+    <string name="error_name_required">Enter the renter’s name</string>
+    <string name="error_vehicle_invalid">Enter the vehicle number</string>
+    <string name="error_vehicle_taken">This vehicle is already linked to another renter</string>
+    <string name="error_rent_invalid">Enter the weekly rent</string>
+    <string name="error_hold_reason_required">Choose a reason</string>
+    <string name="error_save_failed">Could not save. Please try again.</string>
+
+    <!-- Renter status -->
+    <string name="status_active">Active</string>
+    <string name="status_on_hold">On hold</string>
+
+    <!-- Reasons a vehicle is on hold -->
+    <string name="hold_reason_missed_payments">Missed payments</string>
+    <string name="hold_reason_repair">Repair</string>
+    <string name="hold_reason_returned">Returned</string>
+    <string name="hold_reason_other">Other</string>
+
+    <!-- Rent day chips -->
+    <string name="day_mon">Mon</string>
+    <string name="day_tue">Tue</string>
+    <string name="day_wed">Wed</string>
+    <string name="day_thu">Thu</string>
+    <string name="day_fri">Fri</string>
+    <string name="day_sat">Sat</string>
+    <string name="day_sun">Sun</string>
+    <string name="setup_no_leaders">No upper management accounts are built into this copy of the app.</string>
+    <string name="settings_my_email">My email</string>
+    <string name="my_email_intro">Reports and invites you send use this email.</string>
+    <string name="action_save_email">Save email</string>
+    <string name="my_email_saved">Email saved.</string>
+</resources>

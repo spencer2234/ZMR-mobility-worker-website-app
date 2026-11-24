@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Window theme shown for a moment at launch. All real styling is done in Compose (ui/theme). -->
+    <style name="Theme.ZmrRent" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/window_background</item>
+        <!-- No click sounds anywhere in the app (Compose clicks are silenced in ZmrApp). -->
+        <item name="android:soundEffectsEnabled">false</item>
+    </style>
+</resources>
