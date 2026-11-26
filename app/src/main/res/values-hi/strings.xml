@@ -210,8 +210,8 @@
 
     <!-- Payment details (founder settings) -->
     <string name="action_settings">भुगतान की जानकारी</string>
-    <string name="settings_title">भुगतान की जानकारी</string>
-    <string name="settings_intro">किरायेदार पैसे कहाँ भेजें। UPI, बैंक खाता या दोनों भरें।</string>
+    <string name="settings_title">कंपनी सेटिंग्स</string>
+    <string name="settings_intro">किरायेदार पैसे कहाँ भेजें, पहले भुगतान की रकम, और इनवाइट में भेजे जाने वाले लिंक।</string>
     <string name="settings_upi_section">UPI</string>
     <string name="field_upi_id">ZMR की UPI ID</string>
     <string name="field_payee_name">भुगतान में दिखने वाला नाम</string>
@@ -281,4 +281,11 @@
     <string name="my_email_intro">आपकी भेजी रिपोर्ट और इनवाइट में यह ईमेल जाता है।</string>
     <string name="action_save_email">ईमेल सेव करें</string>
     <string name="my_email_saved">ईमेल सेव हो गया।</string>
+    <string name="settings_links_section">इनवाइट लिंक</string>
+    <string name="field_app_download_link">ऐप डाउनलोड लिंक</string>
+    <string name="hint_app_download_link">APK का Google Drive शेयर लिंक। यह आपके हर इनवाइट में जाता है।</string>
+    <string name="field_invite_page_link">इनवाइट पेज लिंक</string>
+    <string name="error_link_invalid">पूरा लिंक लिखें, https:// से शुरू करके</string>
+    <string name="invite_message_link">नमस्ते %1$s, आपको ZMR Rent ऐप में %2$s के रूप में जोड़ा गया है।\n\nअपने Android फ़ोन पर यह लिंक दबाएँ। इसमें ऐप डाउनलोड करने और अकाउंट सेट अप करने का तरीका है:\n%3$s</string>
+    <string name="invite_download_line">ऐप डाउनलोड करें: %1$s\n\n</string>
 </resources>

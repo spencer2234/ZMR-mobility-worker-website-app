@@ -96,4 +96,15 @@ class PaymentSettingsTest {
         assertEquals(PaymentSettings.ZMR_UPI_ID, defaults.upiId)
         assertEquals(PaymentSettings.ZMR_PAYEE_NAME, defaults.payeeName)
     }
+
+    @Test
+    fun `invite links must be full https links, and the invite page has a default`() {
+        val bad = PaymentSettings(appDownloadLink = "drive.google.com/x", invitePageLink = "http://example.com")
+        assertEquals(
+            setOf(PaymentSettingsError.DOWNLOAD_LINK_INVALID, PaymentSettingsError.INVITE_PAGE_INVALID),
+            PaymentSettingsValidator.validate(bad),
+        )
+        assertTrue(PaymentSettingsValidator.validate(PaymentSettings(appDownloadLink = "https://drive.google.com/x")).isEmpty())
+        assertEquals(PaymentSettings.DEFAULT_INVITE_PAGE, PaymentSettings.from(emptyList()).invitePageLink)
+    }
 }

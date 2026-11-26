@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
@@ -14,8 +16,22 @@ android {
         minSdk = 26
         // Android 16. Raise it only after testing the app on the newer Android version.
         targetSdk = 36
-        versionCode = 1
-        versionName = "0.1.0"
+        // Raise versionCode for every APK sent out, or phones will not install it as an update.
+        versionCode = 2
+        versionName = "1.0.0"
+    }
+
+    // The release key and its passwords live in keystore.properties, which is not in git.
+    // Without that file a release build is unsigned, so it cannot be installed.
+    val keystoreFile = rootProject.file("keystore.properties")
+    if (keystoreFile.exists()) {
+        val keystore = Properties().apply { keystoreFile.inputStream().use(::load) }
+        signingConfigs.create("release") {
+            storeFile = file(keystore.getProperty("storeFile"))
+            storePassword = keystore.getProperty("storePassword")
+            keyAlias = keystore.getProperty("keyAlias")
+            keyPassword = keystore.getProperty("keyPassword")
+        }
     }
 
     androidResources {
@@ -27,6 +43,7 @@ android {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
+            signingConfig = signingConfigs.findByName("release")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
@@ -38,6 +55,8 @@ android {
 
     buildFeatures {
         compose = true
+        // BuildConfig.DEBUG hides guest mode in release builds.
+        buildConfig = true
     }
 
     testOptions {

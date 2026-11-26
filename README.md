@@ -15,7 +15,11 @@ network, and a worker who should never have to type more than a few words.
 | 3 | Initial rental amounts (deposit, advance) | **Done**: after adding a renter, collect ₹2,000 deposit + ₹1,400 advance by UPI QR code, bank transfer or cash; saved as two separate payments with the reference |
 | 4 | Daily summary for the founder | **Done as Excel reports**: employee report to manager, team report to CEO, company report; sent by WhatsApp or email |
 | 5 | Simple screens | Started: home screen, large type and buttons, no click sounds, English and draft Hindi |
-| 6 | Data and access (roles, backup, sync) | Started: Employee / Manager / CEO accounts set up by invite code, 4-digit PIN, guest mode. Backup and cloud sync not started |
+| 6 | Data and access (roles, backup, sync) | Started: Employee / Manager / Upper management accounts set up by invite link, 4-digit PIN. Backup and cloud sync are Version 2 |
+
+**Version 1.0.0 (ZMR Rent Local)** is the phone-only app, released as a signed APK. How to
+release it: [docs/release-v1.md](docs/release-v1.md). The plan for Version 2, which uses a
+server, is in [docs/two-versions-plan.md](docs/two-versions-plan.md).
 
 The full plan and schedule are in the project's timeline document. Requirements, design
 decisions and open questions are in [docs/](docs/).
@@ -35,6 +39,7 @@ From a terminal (set `JAVA_HOME` to a JDK 17 or newer first; Android Studio's bu
 ./gradlew testDebugUnitTest    # run all unit tests (no phone needed)
 ./gradlew lintDebug            # Android lint
 ./gradlew installDebug         # install on the connected phone or emulator
+./gradlew assembleRelease      # signed release APK (needs keystore.properties, see docs/release-v1.md)
 ```
 
 On Windows use `gradlew.bat` in place of `./gradlew`.
@@ -64,6 +69,7 @@ app/src/main/java/com/zmr/rent/
     components/                        shared pieces: BigButton, ChoiceGrid, DateField, top bar
     theme/                             colours and the large type scale
   util/Sending.kt                      sending files and invites through WhatsApp and email
+invite-page/                           the web page invite links open, and the README for employees
 app/src/main/res/
   values/strings.xml                   every word shown to the user (English)
   values-hi/strings.xml                Hindi (draft)
@@ -93,8 +99,9 @@ invite codes and Excel files sent over WhatsApp or email:
 
 1. Upper management (listed in the APK, see [docs/upper-management.md](docs/upper-management.md))
    taps **Set up as upper management** on their own phone, picks their name and types their PIN.
-2. The CEO taps **Add manager** (name, employee ID, mobile, email, city/area) and sends the
-   invite code. The manager taps **I have an invite code** on their own phone and picks a PIN.
+2. Upper management taps **Add manager login** (name, employee ID, mobile, email, city/area) and
+   sends the invite by WhatsApp. The manager taps the link, installs the app, taps **Open my
+   invite in ZMR Rent** and picks a PIN ([invite-page/README.md](invite-page/README.md)).
 3. A manager adds employees the same way. Employees are placed in the manager's area.
 4. An employee taps **Send report**: the app builds an Excel file of the renters and payments
    they entered and opens WhatsApp or email addressed to their manager.

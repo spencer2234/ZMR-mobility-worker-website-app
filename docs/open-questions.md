@@ -35,6 +35,7 @@ is confirmed, then update the code or [decisions.md](decisions.md).
 13. **Is the rent day always the weekday the rental starts?** The app now works this way: the
     rental start date is picked on a calendar and rent is due every week on that weekday.
 14. **Should "Continue as guest" stay in the released app?** It is there for testing now.
+    *Answered 2026-11-25:* it is left out of release builds and kept in debug builds for testing.
 15. **Who may set up as CEO?** On a phone with no CEO account, anyone can tap "Set up as CEO".
     That only creates a CEO on that one phone, but it should be limited before release.
    *Answered 2026-11-24:* only the people built into the APK (Javed Ali, Gaurav) can set up as
@@ -51,6 +52,8 @@ is confirmed, then update the code or [decisions.md](decisions.md).
     report day. For a large fleet a date range may be better.
 20. **Re-sending invites.** An invite can be created once per employee ID. If it is lost, the
     manager needs a "Send invite again" option (not built yet).
+    *Answered 2026-11-25:* adding the same person again (same ID and name) makes a new invite, which
+    also resets a forgotten PIN.
 21. **What did "Aadhaar verification using Sahamati" mean?** Sahamati runs the Account Aggregator
     network and does not appear to verify Aadhaar. Official checks go through UIDAI OVSE registration.
 22. **What do the green rows in ZMR's sheet mean?** The sheet colours some riders green with no

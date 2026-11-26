@@ -17,6 +17,10 @@ data class PaymentSettings(
     val bankName: String = "",
     val depositPaise: Long = DEFAULT_DEPOSIT_PAISE,
     val advancePaise: Long = DEFAULT_ADVANCE_PAISE,
+    /** Where new people download the APK (for example a Google Drive share link). Sent inside invites. */
+    val appDownloadLink: String = "",
+    /** The web page invite links open (see invite-page/ in the repo). */
+    val invitePageLink: String = DEFAULT_INVITE_PAGE,
 ) {
     val hasUpi: Boolean get() = upiId.isNotEmpty()
     val hasBankAccount: Boolean get() = bankAccountNumber.isNotEmpty()
@@ -31,12 +35,17 @@ data class PaymentSettings(
         Setting(KEY_BANK_NAME, bankName),
         Setting(KEY_DEPOSIT_PAISE, depositPaise.toString()),
         Setting(KEY_ADVANCE_PAISE, advancePaise.toString()),
+        Setting(KEY_APP_DOWNLOAD_LINK, appDownloadLink),
+        Setting(KEY_INVITE_PAGE_LINK, invitePageLink),
     )
 
     companion object {
         // ZMR's verified Paytm merchant account, from its official QR code.
         const val ZMR_UPI_ID = "zmrmobility@ptaxis"
         const val ZMR_PAYEE_NAME = "ZMR MOBILITY PRIVATE LIMITED"
+
+        /** The invite page on GitHub Pages; upper management can change it under Company settings. */
+        const val DEFAULT_INVITE_PAGE = "https://spencer2234.github.io/zmr-rent/"
 
         /** Rs 2,000. */
         const val DEFAULT_DEPOSIT_PAISE = 200_000L
@@ -52,6 +61,8 @@ data class PaymentSettings(
         private const val KEY_BANK_NAME = "payment.bankName"
         private const val KEY_DEPOSIT_PAISE = "amount.depositPaise"
         private const val KEY_ADVANCE_PAISE = "amount.advancePaise"
+        private const val KEY_APP_DOWNLOAD_LINK = "company.appDownloadLink"
+        private const val KEY_INVITE_PAGE_LINK = "company.invitePageLink"
 
         /** Builds settings from stored rows; anything missing keeps its default, including ZMR's UPI account. */
         fun from(settings: List<Setting>): PaymentSettings {
@@ -66,6 +77,8 @@ data class PaymentSettings(
                 bankName = values[KEY_BANK_NAME] ?: defaults.bankName,
                 depositPaise = values[KEY_DEPOSIT_PAISE]?.toLongOrNull() ?: defaults.depositPaise,
                 advancePaise = values[KEY_ADVANCE_PAISE]?.toLongOrNull() ?: defaults.advancePaise,
+                appDownloadLink = values[KEY_APP_DOWNLOAD_LINK].orEmpty(),
+                invitePageLink = values[KEY_INVITE_PAGE_LINK].orEmpty().ifEmpty { DEFAULT_INVITE_PAGE },
             )
         }
     }
@@ -79,6 +92,8 @@ enum class PaymentSettingsError {
     IFSC_INVALID,
     DEPOSIT_INVALID,
     ADVANCE_INVALID,
+    DOWNLOAD_LINK_INVALID,
+    INVITE_PAGE_INVALID,
 }
 
 object PaymentSettingsValidator {
@@ -91,6 +106,8 @@ object PaymentSettingsValidator {
         bankAccountNumber = settings.bankAccountNumber.filter { it in '0'..'9' },
         bankIfsc = settings.bankIfsc.trim().uppercase().filter { it in 'A'..'Z' || it in '0'..'9' },
         bankName = settings.bankName.trim().replace(WHITESPACE, " "),
+        appDownloadLink = settings.appDownloadLink.trim(),
+        invitePageLink = settings.invitePageLink.trim(),
     )
 
     /**
@@ -111,7 +128,13 @@ object PaymentSettingsValidator {
         }
         if (settings.depositPaise !in 0..Money.MAX_AMOUNT_PAISE) add(PaymentSettingsError.DEPOSIT_INVALID)
         if (settings.advancePaise !in 0..Money.MAX_AMOUNT_PAISE) add(PaymentSettingsError.ADVANCE_INVALID)
+        if (!isLinkOrEmpty(settings.appDownloadLink)) add(PaymentSettingsError.DOWNLOAD_LINK_INVALID)
+        if (!isLinkOrEmpty(settings.invitePageLink)) add(PaymentSettingsError.INVITE_PAGE_INVALID)
     }
+
+    /** Links must be complete web addresses, because they are sent to people to tap. */
+    private fun isLinkOrEmpty(link: String) =
+        link.isEmpty() || (link.startsWith("https://") && link.length > 12 && link.none { it.isWhitespace() })
 
     private val WHITESPACE = Regex("\\s+")
 }

@@ -56,6 +56,8 @@ object InviteCodec {
             "bank" to invite.payment.bankName,
             "deposit" to invite.payment.depositPaise.toString(),
             "advance" to invite.payment.advancePaise.toString(),
+            "dl" to invite.payment.appDownloadLink,
+            "page" to invite.payment.invitePageLink,
         )
         val text = fields.entries.joinToString("&") { (key, value) -> "$key=${URLEncoder.encode(value, "UTF-8")}" }
         val payload = Base64.getUrlEncoder().withoutPadding().encodeToString(deflate(text.toByteArray(Charsets.UTF_8)))
@@ -91,6 +93,8 @@ object InviteCodec {
                     bankName = field("bank"),
                     depositPaise = field("deposit").toLongOrNull() ?: PaymentSettings.DEFAULT_DEPOSIT_PAISE,
                     advancePaise = field("advance").toLongOrNull() ?: PaymentSettings.DEFAULT_ADVANCE_PAISE,
+                    appDownloadLink = field("dl"),
+                    invitePageLink = field("page"),
                 ),
             ).takeIf { it.member.name.isNotBlank() && it.member.employeeCode.isNotBlank() }
         } catch (e: IllegalArgumentException) {
@@ -134,5 +138,20 @@ object InviteCodec {
         } finally {
             inflater.end()
         }
+    }
+}
+
+/**
+ * The one link an invite message carries. It opens the invite page, which offers the APK download
+ * and then opens the app with the code. Everything after '#' stays on the phone: browsers never
+ * send it to the page's host.
+ */
+object InviteLink {
+    /** The app opens links like zmrrent://invite?c=ZMR1.... (see AndroidManifest.xml). */
+    const val SCHEME = "zmrrent"
+
+    fun build(page: String, code: String, downloadLink: String): String {
+        val download = if (downloadLink.isEmpty()) "" else "&d=" + URLEncoder.encode(downloadLink, "UTF-8")
+        return page.trimEnd('/') + "/#c=" + code + download
     }
 }

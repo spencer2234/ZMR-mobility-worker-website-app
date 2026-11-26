@@ -132,7 +132,9 @@ class AuthRepository(
         val person = clean(
             PersonDetails(invite.member.name, invite.member.employeeCode, invite.member.phone, invite.member.email, invite.area),
         )
-        val errors = pinErrors(pin, confirmPin) + takenErrors(person)
+        // A new invite for an account already on this phone resets its PIN; records stay.
+        val existing = userDao.findByCode(person.employeeCode)
+        val errors = pinErrors(pin, confirmPin) + if (existing == null) takenErrors(person) else emptySet()
         if (errors.isNotEmpty()) return AccountResult.Invalid(errors)
 
         // The phone takes the payment details of the person who sent the invite, so this
@@ -140,7 +142,7 @@ class AuthRepository(
         val payment = PaymentSettingsValidator.clean(invite.payment)
         if (PaymentSettingsValidator.validate(payment).isEmpty()) settingsDao.upsertAll(payment.toSettings())
 
-        return createAndSignIn(person, invite.role, invite.reportsTo, pin)
+        return createAndSignIn(person, invite.role, invite.reportsTo, pin, existing)
     }
 
     /**
@@ -153,9 +155,10 @@ class AuthRepository(
         // A manager's employees work in the manager's area; upper management types the area.
         val person = clean(if (me.area.isNotEmpty() && role == UserRole.EMPLOYEE) details.copy(area = me.area) else details)
         val errors = personErrors(person, needsArea = true).toMutableSet()
-        if (person.employeeCode.isNotEmpty() &&
-            (userDao.countTeamMembersWithCode(person.employeeCode) > 0 || person.employeeCode == me.employeeCode)
-        ) {
+        // The same person (same ID and name) can be sent a new invite: a lost invite, a new phone or
+        // a forgotten PIN. A different person with an ID already used is refused.
+        val existing = userDao.findTeamMember(person.employeeCode)
+        if (person.employeeCode == me.employeeCode || (existing != null && !existing.name.equals(person.name, ignoreCase = true))) {
             errors += AccountError.CODE_TAKEN
         }
         if (errors.isNotEmpty()) return InviteResult.Invalid(errors)
@@ -198,7 +201,13 @@ class AuthRepository(
 
     fun logOut() = session.signOut()
 
-    private suspend fun createAndSignIn(person: PersonDetails, role: UserRole, reportsTo: Contact?, pin: String): AccountResult {
+    private suspend fun createAndSignIn(
+        person: PersonDetails,
+        role: UserRole,
+        reportsTo: Contact?,
+        pin: String,
+        existing: User? = null,
+    ): AccountResult {
         val salt = Pin.newSalt()
         val hash = withContext(hashDispatcher) { Pin.hash(pin, salt) }
         val user = User(
@@ -217,7 +226,13 @@ class AuthRepository(
             reportsToEmail = reportsTo?.email.orEmpty(),
         )
         val id = try {
-            userDao.insert(user)
+            if (existing != null) {
+                // Keeps the name records are stamped with, so the person's history stays theirs.
+                userDao.update(user.copy(id = existing.id, name = existing.name, createdAt = existing.createdAt))
+                existing.id
+            } else {
+                userDao.insert(user)
+            }
         } catch (e: SQLiteConstraintException) {
             return AccountResult.Invalid(setOf(AccountError.CODE_TAKEN))
         }

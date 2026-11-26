@@ -26,10 +26,10 @@ import com.zmr.rent.ui.labelRes
 
 /**
  * The first screen: Log in, or Continue as guest. A guest then picks which view to try
- * (Employee, Manager or Upper management). Guest mode is temporary, for testing the app.
+ * (Employee, Manager or Upper management). Guest mode is for testing: a null [onGuest] hides it.
  */
 @Composable
-fun WelcomeScreen(onLogIn: () -> Unit, onGuest: (UserRole) -> Unit) {
+fun WelcomeScreen(onLogIn: () -> Unit, onGuest: ((UserRole) -> Unit)?) {
     var choosingView by rememberSaveable { mutableStateOf(false) }
     BackHandler(enabled = choosingView) { choosingView = false }
 
@@ -40,18 +40,20 @@ fun WelcomeScreen(onLogIn: () -> Unit, onGuest: (UserRole) -> Unit) {
         ) {
             if (!choosingView) {
                 BigButton(stringResource(R.string.action_log_in), painterResource(R.drawable.ic_check), onLogIn)
-                BigOutlinedButton(
-                    label = stringResource(R.string.action_continue_guest),
-                    icon = painterResource(R.drawable.ic_person),
-                    onClick = { choosingView = true },
-                )
+                if (onGuest != null) {
+                    BigOutlinedButton(
+                        label = stringResource(R.string.action_continue_guest),
+                        icon = painterResource(R.drawable.ic_person),
+                        onClick = { choosingView = true },
+                    )
+                }
             } else {
                 Text(stringResource(R.string.guest_choose_view), style = MaterialTheme.typography.titleMedium)
                 UserRole.entries.forEach { role ->
                     BigOutlinedButton(
                         label = stringResource(role.labelRes()),
                         icon = painterResource(R.drawable.ic_person),
-                        onClick = { onGuest(role) },
+                        onClick = { onGuest?.invoke(role) },
                     )
                 }
             }

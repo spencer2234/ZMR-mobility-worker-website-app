@@ -45,4 +45,19 @@ class InviteCodecTest {
         assertNull(InviteCodec.decode("hello"))
         assertNull(InviteCodec.decode(""))
     }
+
+    @Test
+    fun `an invite link carries the code and download link, and the app reads the code back from it`() {
+        val withLinks = invite.copy(
+            payment = invite.payment.copy(appDownloadLink = "https://drive.google.com/file/d/abc/view?usp=sharing", invitePageLink = "https://example.github.io/zmr-rent/"),
+        )
+        val code = InviteCodec.encode(withLinks)
+        val link = InviteLink.build(withLinks.payment.invitePageLink, code, withLinks.payment.appDownloadLink)
+
+        assertTrue(link, link.startsWith("https://example.github.io/zmr-rent/#c=ZMR1."))
+        assertTrue(link, link.endsWith("&d=https%3A%2F%2Fdrive.google.com%2Ffile%2Fd%2Fabc%2Fview%3Fusp%3Dsharing"))
+        assertEquals(withLinks, InviteCodec.decode(link))
+        // The invite page opens the app with zmrrent://invite?c=<code>.
+        assertEquals(withLinks, InviteCodec.decode("zmrrent://invite?c=$code"))
+    }
 }

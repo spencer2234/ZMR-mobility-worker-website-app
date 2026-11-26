@@ -170,6 +170,26 @@ class AuthRepositoryTest {
     }
 
     @Test
+    fun `a new invite for the same person replaces the old one and resets their PIN`() = runTest {
+        setUpCeo()
+        val ravi = PersonDetails("Ravi Kumar", "EMP-102", "9988776655", "ravi@example.com", "Delhi")
+        val first = ceoPhone.invite(UserRole.EMPLOYEE, ravi)
+        val raviPhone = Phone()
+        val userId = (raviPhone.auth.setUpFromInvite(first, "1111", "1111") as AccountResult.SignedIn).user.userId!!
+        raviPhone.auth.logOut()
+
+        // Ravi forgot his PIN: his manager sends a new invite with his new number.
+        val second = ceoPhone.invite(UserRole.EMPLOYEE, ravi.copy(phone = "9988776600"))
+        assertEquals(1, ceoPhone.database.userDao().getTeam("CEO-1").size)
+        val again = (raviPhone.auth.setUpFromInvite(second, "2222", "2222") as AccountResult.SignedIn).user
+        assertEquals(userId, again.userId)
+        assertEquals("9988776600", again.phone)
+        raviPhone.auth.logOut()
+        assertEquals(LoginResult.WrongPin, raviPhone.auth.logIn(userId, "1111"))
+        assertTrue(raviPhone.auth.logIn(userId, "2222") is LoginResult.LoggedIn)
+    }
+
+    @Test
     fun `a broken invite code is refused`() = runTest {
         assertEquals(
             AccountResult.Invalid(setOf(AccountError.INVITE_INVALID)),

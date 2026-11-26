@@ -3,6 +3,8 @@ package com.zmr.rent.data.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
+import androidx.room.Upsert
 import com.zmr.rent.data.entity.TeamMember
 import com.zmr.rent.data.entity.User
 import com.zmr.rent.data.entity.UserSummary
@@ -27,6 +29,12 @@ interface UserDao {
     @Query("SELECT COUNT(*) FROM users WHERE employeeCode = :employeeCode")
     suspend fun countWithCode(employeeCode: String): Int
 
+    @Query("SELECT * FROM users WHERE employeeCode = :employeeCode")
+    suspend fun findByCode(employeeCode: String): User?
+
+    @Update
+    suspend fun update(user: User)
+
     @Insert
     suspend fun insert(user: User): Long
 
@@ -41,9 +49,10 @@ interface UserDao {
     @Query("SELECT * FROM team_members WHERE addedByCode = :addedByCode ORDER BY name COLLATE NOCASE")
     suspend fun getTeam(addedByCode: String): List<TeamMember>
 
-    @Query("SELECT COUNT(*) FROM team_members WHERE employeeCode = :employeeCode")
-    suspend fun countTeamMembersWithCode(employeeCode: String): Int
+    @Query("SELECT * FROM team_members WHERE employeeCode = :employeeCode")
+    suspend fun findTeamMember(employeeCode: String): TeamMember?
 
-    @Insert
+    /** Sending someone a new invite updates their details. */
+    @Upsert
     suspend fun insertTeamMember(member: TeamMember)
 }

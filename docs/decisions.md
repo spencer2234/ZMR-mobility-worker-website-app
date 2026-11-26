@@ -190,6 +190,24 @@ directly; this uses a widely supported but unofficial WhatsApp feature, and if i
 honoured the person picks the chat. "Send by email" fills in the address, subject and file.
 Invites go by WhatsApp's official wa.me link or an email draft.
 
+## Version 1 release
+
+**Invites are one link to a static page.** The invite page (`invite-page/`, on GitHub Pages)
+offers the APK download and then opens the app through `zmrrent://invite?c=<code>`. The code and
+download link travel after `#`, which browsers keep on the phone, so the page stores and receives
+nothing. A custom scheme was used instead of an App Link: an App Link needs a file at the root of
+the web address, which a GitHub project page cannot serve. Pasting the code still works.
+
+**The APK is hosted privately** (a Google Drive link), because it contains upper management's
+details. The download link and invite page link are Company settings and travel inside invites.
+
+**Release builds are signed with ZMR's own key**, kept out of git with a backup. Updates must use
+the same key or phones refuse them. Guest mode is left out of release builds (`BuildConfig.DEBUG`).
+
+**A new invite for the same person replaces the old one.** Same employee ID and name: the
+manager's record is updated, and on a phone that already has the account it resets the PIN and
+keeps the records. A different person with a used employee ID is still refused.
+
 ## Android automatic backup
 
 Android's own backup (to the worker's Google account) and phone-to-phone transfer are left

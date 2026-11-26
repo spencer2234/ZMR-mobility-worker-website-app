@@ -147,7 +147,25 @@ fun PaymentSettingsScreen(container: AppContainer, onBack: () -> Unit) {
                 labelRes = R.string.payment_advance,
                 errorRes = error(PaymentSettingsError.ADVANCE_INVALID, R.string.error_amount_invalid),
                 prefix = "₹ ",
-                keyboardOptions = number.copy(imeAction = ImeAction.Done),
+                keyboardOptions = number,
+            )
+
+            SectionTitle(R.string.settings_links_section)
+            val link = KeyboardOptions(keyboardType = KeyboardType.Uri, autoCorrectEnabled = false, imeAction = ImeAction.Next)
+            FormTextField(
+                value = state.appDownloadLink,
+                onValueChange = viewModel::onAppDownloadLinkChange,
+                labelRes = R.string.field_app_download_link,
+                errorRes = error(PaymentSettingsError.DOWNLOAD_LINK_INVALID, R.string.error_link_invalid),
+                keyboardOptions = link,
+                hintRes = R.string.hint_app_download_link,
+            )
+            FormTextField(
+                value = state.invitePageLink,
+                onValueChange = viewModel::onInvitePageLinkChange,
+                labelRes = R.string.field_invite_page_link,
+                errorRes = error(PaymentSettingsError.INVITE_PAGE_INVALID, R.string.error_link_invalid),
+                keyboardOptions = link.copy(imeAction = ImeAction.Done),
             )
 
             if (state.saveFailed) {

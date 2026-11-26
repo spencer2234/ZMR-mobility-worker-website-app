@@ -181,8 +181,8 @@
     <string name="payment_recorded_line">%1$s · %2$s · %3$s</string>
     <string name="payment_recorded_detail">குறிப்பு %1$s · பதிவு செய்தவர் %2$s, %3$s</string>
     <string name="action_settings">கட்டண விவரங்கள்</string>
-    <string name="settings_title">கட்டண விவரங்கள்</string>
-    <string name="settings_intro">வாடகைதாரர்கள் பணம் அனுப்பும் இடம். UPI, வங்கிக் கணக்கு அல்லது இரண்டையும் நிரப்பவும்.</string>
+    <string name="settings_title">நிறுவன அமைப்புகள்</string>
+    <string name="settings_intro">வாடகைதாரர்கள் பணம் அனுப்பும் இடம், முதல் கட்டணத் தொகைகள், மற்றும் அழைப்புகளில் அனுப்பப்படும் இணைப்புகள்.</string>
     <string name="settings_upi_section">UPI</string>
     <string name="field_upi_id">ZMR இன் UPI ID</string>
     <string name="field_payee_name">செலுத்தும்போது தெரியும் பெயர்</string>
@@ -240,4 +240,11 @@
     <string name="my_email_intro">நீங்கள் அனுப்பும் அறிக்கைகளும் அழைப்புகளும் இந்த மின்னஞ்சலைப் பயன்படுத்தும்.</string>
     <string name="action_save_email">மின்னஞ்சலைச் சேமி</string>
     <string name="my_email_saved">மின்னஞ்சல் சேமிக்கப்பட்டது.</string>
+    <string name="settings_links_section">அழைப்பு இணைப்புகள்</string>
+    <string name="field_app_download_link">செயலி பதிவிறக்க இணைப்பு</string>
+    <string name="hint_app_download_link">APK-இன் Google Drive பகிர்வு இணைப்பு. நீங்கள் அனுப்பும் ஒவ்வொரு அழைப்பிலும் இது செல்லும்.</string>
+    <string name="field_invite_page_link">அழைப்புப் பக்க இணைப்பு</string>
+    <string name="error_link_invalid">https:// என்று தொடங்கும் முழு இணைப்பை உள்ளிடவும்</string>
+    <string name="invite_message_link">வணக்கம் %1$s, ZMR Rent செயலியில் நீங்கள் %2$s ஆகச் சேர்க்கப்பட்டுள்ளீர்கள்.\n\nஉங்கள் Android போனில் இந்த இணைப்பைத் தட்டவும். செயலியைப் பதிவிறக்கி கணக்கை அமைக்கும் வழி அதில் உள்ளது:\n%3$s</string>
+    <string name="invite_download_line">செயலியைப் பதிவிறக்கவும்: %1$s\n\n</string>
 </resources>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>ZMR Rent invite</title>
+<!--
+  The invite page for the ZMR Rent app (Version 1). It holds no data: the invite code and the
+  download link arrive after '#' in the link (…/#c=ZMR1…&d=…), which browsers never send to the
+  web server. See README.md in this folder.
+-->
+<style>
+  :root { --blue: #0b4f9c; --ink: #1b1b1f; --muted: #555; --line: #d9dde3; --bg: #ffffff; --soft: #eef3fa; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 18px/1.5 system-ui, "Noto Sans", sans-serif; }
+  header { background: var(--blue); color: #fff; padding: 16px; font-size: 22px; font-weight: 600; }
+  main { max-width: 560px; margin: 0 auto; padding: 16px; }
+  .step { border: 1px solid var(--line); border-radius: 16px; padding: 16px; margin: 16px 0; }
+  .step h2 { margin: 0 0 8px; font-size: 20px; }
+  .num { display: inline-block; width: 32px; height: 32px; border-radius: 50%; background: var(--blue); color: #fff; text-align: center; line-height: 32px; margin-right: 8px; }
+  .button { display: block; width: 100%; min-height: 56px; margin-top: 12px; padding: 14px; border: 0; border-radius: 12px; background: var(--blue); color: #fff; font-size: 19px; font-weight: 600; text-align: center; text-decoration: none; cursor: pointer; }
+  .button.outline { background: #fff; color: var(--blue); border: 2px solid var(--blue); }
+  .hi { color: var(--muted); font-size: 16px; }
+  .code { word-break: break-all; background: var(--soft); border-radius: 12px; padding: 12px; font: 13px/1.4 monospace; }
+  .warn { background: #fff4e5; border-radius: 12px; padding: 12px; }
+  ol { padding-left: 22px; }
+</style>
+</head>
+<body>
+<header>ZMR Rent</header>
+<main>
+  <div id="noInvite" class="warn" hidden>
+    This link has no invite in it. Ask your manager to send the invite again.<br>
+    <span class="hi">इस लिंक में इनवाइट नहीं है। अपने मैनेजर से इनवाइट दोबारा भेजने को कहें।</span>
+  </div>
+
+  <div id="invite" hidden>
+    <p>You have been invited to the ZMR Rent app. Do these two steps on your Android phone.<br>
+      <span class="hi">आपको ZMR Rent ऐप में जोड़ा गया है। अपने Android फ़ोन पर ये दो काम करें।</span></p>
+
+    <section class="step">
+      <h2><span class="num">1</span>Download and install the app</h2>
+      <p class="hi">ऐप डाउनलोड करके इंस्टॉल करें</p>
+      <a id="download" class="button" href="#">Download ZMR Rent</a>
+      <p id="noDownload" hidden>Ask your manager for the download link.</p>
+      <ol>
+        <li>Open the downloaded file (<b>ZMR-Rent.apk</b>).</li>
+        <li>If the phone says <b>"For your security, your phone is not allowed to install unknown apps"</b>, tap <b>Settings</b>, turn on <b>Allow from this source</b>, then go back.</li>
+        <li>Tap <b>Install</b>. If Play Protect asks, tap <b>More details → Install anyway</b>.</li>
+      </ol>
+      <p class="hi">ZMR Rent को Play Store से नहीं, सीधे ZMR से इंस्टॉल किया जाता है, इसलिए फ़ोन एक बार अनुमति माँगता है।</p>
+    </section>
+
+    <section class="step">
+      <h2><span class="num">2</span>Set up your account</h2>
+      <p class="hi">अपना अकाउंट सेट अप करें</p>
+      <p>Come back to this page after installing, then tap:</p>
+      <a id="open" class="button" href="#">Open my invite in ZMR Rent</a>
+      <p>The app opens with your details filled in. Check they are yours, choose a 4-digit PIN, and tap <b>Set up this phone</b>.</p>
+      <p class="hi">ऐप आपकी जानकारी के साथ खुलेगा। जाँचें, 4 अंकों का PIN चुनें और "Set up this phone" दबाएँ।</p>
+    </section>
+
+    <section class="step">
+      <h2>If the button does not open the app</h2>
+      <ol>
+        <li>Tap <b>Copy invite code</b> below.</li>
+        <li>Open <b>ZMR Rent</b>, tap <b>Log in</b>, then <b>I have an invite code</b>.</li>
+        <li>Paste the code, choose your PIN and tap <b>Set up this phone</b>.</li>
+      </ol>
+      <button id="copy" class="button outline" type="button">Copy invite code</button>
+      <p id="code" class="code"></p>
+    </section>
+
+    <p class="hi">Keep this invite to yourself: anyone with it can set up your account.<br>
+      यह इनवाइट किसी और को न भेजें।</p>
+  </div>
+</main>
+<script>
+  // The invite arrives after '#': #c=<invite code>&d=<download link, URL-encoded>.
+  var params = new URLSearchParams(location.hash.slice(1));
+  var code = params.get("c") || "";
+  var download = params.get("d") || "";
+  var valid = /^ZMR1\.[A-Za-z0-9_-]+\.[0-9a-f]{8}$/.test(code);
+
+  document.getElementById(valid ? "invite" : "noInvite").hidden = false;
+  if (valid) {
+    document.getElementById("code").textContent = code;
+    var dl = document.getElementById("download");
+    if (/^https:\/\//.test(download)) dl.href = download;
+    else { dl.hidden = true; document.getElementById("noDownload").hidden = false; }
+    // Chrome on Android opens the installed app through an intent link.
+    document.getElementById("open").href =
+      "intent://invite?c=" + encodeURIComponent(code) + "#Intent;scheme=zmrrent;package=com.zmr.rent;end";
+    document.getElementById("copy").onclick = function () {
+      var done = function () { document.getElementById("copy").textContent = "Copied ✓"; };
+      if (navigator.clipboard) navigator.clipboard.writeText(code).then(done, function () {});
+      else { var r = document.createRange(); r.selectNode(document.getElementById("code")); getSelection().addRange(r); document.execCommand("copy"); done(); }
+    };
+  }
+</script>
+</body>
+</html>

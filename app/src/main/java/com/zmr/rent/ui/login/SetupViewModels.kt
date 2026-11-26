@@ -14,6 +14,7 @@ import com.zmr.rent.domain.Invite
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.getAndUpdate
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -78,10 +79,18 @@ data class InviteSetupState(
 )
 
 /** Set up this phone from an invite code sent by a manager or the CEO. */
-class InviteSetupViewModel(private val authRepository: AuthRepository) : ViewModel() {
+class InviteSetupViewModel(
+    private val authRepository: AuthRepository,
+    pendingInvite: MutableStateFlow<String?>,
+) : ViewModel() {
 
     private val _state = MutableStateFlow(InviteSetupState())
     val state: StateFlow<InviteSetupState> = _state.asStateFlow()
+
+    init {
+        // Opened from an invite link: the code is filled in already.
+        pendingInvite.getAndUpdate { null }?.let(::onInviteTextChange)
+    }
 
     fun onInviteTextChange(value: String) = _state.update {
         val text = value.take(MAX_INVITE_TEXT)
@@ -116,7 +125,7 @@ class InviteSetupViewModel(private val authRepository: AuthRepository) : ViewMod
         private const val MAX_INVITE_TEXT = 4_000
 
         fun factory(container: AppContainer): ViewModelProvider.Factory = viewModelFactory {
-            initializer { InviteSetupViewModel(container.authRepository) }
+            initializer { InviteSetupViewModel(container.authRepository, container.pendingInvite) }
         }
     }
 }

@@ -181,8 +181,8 @@
     <string name="payment_recorded_line">%1$s · %2$s · %3$s</string>
     <string name="payment_recorded_detail">ಉಲ್ಲೇಖ %1$s · ದಾಖಲಿಸಿದವರು %2$s, %3$s</string>
     <string name="action_settings">ಪಾವತಿ ವಿವರಗಳು</string>
-    <string name="settings_title">ಪಾವತಿ ವಿವರಗಳು</string>
-    <string name="settings_intro">ಬಾಡಿಗೆದಾರರು ಹಣ ಕಳುಹಿಸುವ ಸ್ಥಳ. UPI, ಬ್ಯಾಂಕ್ ಖಾತೆ ಅಥವಾ ಎರಡನ್ನೂ ಭರ್ತಿಮಾಡಿ.</string>
+    <string name="settings_title">ಕಂಪನಿ ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
+    <string name="settings_intro">ಬಾಡಿಗೆದಾರರು ಹಣ ಕಳುಹಿಸುವ ಸ್ಥಳ, ಮೊದಲ ಪಾವತಿ ಮೊತ್ತಗಳು, ಮತ್ತು ಆಹ್ವಾನಗಳಲ್ಲಿ ಕಳುಹಿಸುವ ಲಿಂಕ್‌ಗಳು.</string>
     <string name="settings_upi_section">UPI</string>
     <string name="field_upi_id">ZMR ನ UPI ID</string>
     <string name="field_payee_name">ಪಾವತಿಸುವಾಗ ಕಾಣುವ ಹೆಸರು</string>
@@ -240,4 +240,11 @@
     <string name="my_email_intro">ನೀವು ಕಳುಹಿಸುವ ವರದಿಗಳು ಮತ್ತು ಆಹ್ವಾನಗಳು ಈ ಇಮೇಲ್ ಬಳಸುತ್ತವೆ.</string>
     <string name="action_save_email">ಇಮೇಲ್ ಉಳಿಸಿ</string>
     <string name="my_email_saved">ಇಮೇಲ್ ಉಳಿಸಲಾಗಿದೆ.</string>
+    <string name="settings_links_section">ಆಹ್ವಾನ ಲಿಂಕ್‌ಗಳು</string>
+    <string name="field_app_download_link">ಆ್ಯಪ್ ಡೌನ್‌ಲೋಡ್ ಲಿಂಕ್</string>
+    <string name="hint_app_download_link">APK ನ Google Drive ಹಂಚಿಕೆ ಲಿಂಕ್. ನೀವು ಕಳುಹಿಸುವ ಪ್ರತಿ ಆಹ್ವಾನದಲ್ಲೂ ಇದು ಹೋಗುತ್ತದೆ.</string>
+    <string name="field_invite_page_link">ಆಹ್ವಾನ ಪುಟದ ಲಿಂಕ್</string>
+    <string name="error_link_invalid">https:// ನಿಂದ ಪ್ರಾರಂಭವಾಗುವ ಪೂರ್ಣ ಲಿಂಕ್ ನಮೂದಿಸಿ</string>
+    <string name="invite_message_link">ನಮಸ್ಕಾರ %1$s, ZMR Rent ಆ್ಯಪ್‌ಗೆ ನಿಮ್ಮನ್ನು %2$s ಆಗಿ ಸೇರಿಸಲಾಗಿದೆ.\n\nನಿಮ್ಮ Android ಫೋನ್‌ನಲ್ಲಿ ಈ ಲಿಂಕ್ ಒತ್ತಿ. ಆ್ಯಪ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ ಖಾತೆ ಹೊಂದಿಸುವ ವಿಧಾನ ಅದರಲ್ಲಿದೆ:\n%3$s</string>
+    <string name="invite_download_line">ಆ್ಯಪ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ: %1$s\n\n</string>
 </resources>

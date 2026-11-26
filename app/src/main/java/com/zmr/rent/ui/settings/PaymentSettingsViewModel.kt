@@ -30,6 +30,8 @@ data class PaymentSettingsFormState(
     val bankName: String = "",
     val deposit: String = "",
     val advance: String = "",
+    val appDownloadLink: String = "",
+    val invitePageLink: String = "",
     val errors: Set<PaymentSettingsError> = emptySet(),
     val isSaving: Boolean = false,
     val saveFailed: Boolean = false,
@@ -56,6 +58,8 @@ class PaymentSettingsViewModel(private val paymentRepository: PaymentRepository)
                     bankName = saved.bankName,
                     deposit = Money.toInputText(saved.depositPaise),
                     advance = Money.toInputText(saved.advancePaise),
+                    appDownloadLink = saved.appDownloadLink,
+                    invitePageLink = saved.invitePageLink,
                 )
             }
         }
@@ -99,6 +103,14 @@ class PaymentSettingsViewModel(private val paymentRepository: PaymentRepository)
         it.copy(advance = value.digitsOnly(), errors = it.errors - PaymentSettingsError.ADVANCE_INVALID)
     }
 
+    fun onAppDownloadLinkChange(value: String) = _state.update {
+        it.copy(appDownloadLink = value.trim().take(500), errors = it.errors - PaymentSettingsError.DOWNLOAD_LINK_INVALID)
+    }
+
+    fun onInvitePageLinkChange(value: String) = _state.update {
+        it.copy(invitePageLink = value.trim().take(500), errors = it.errors - PaymentSettingsError.INVITE_PAGE_INVALID)
+    }
+
     fun save() {
         val form = _state.value
         if (form.isSaving || form.isLoading) return
@@ -112,6 +124,8 @@ class PaymentSettingsViewModel(private val paymentRepository: PaymentRepository)
             // An empty or unreadable amount becomes -1, which the validator reports as missing.
             depositPaise = Money.parseRupees(form.deposit) ?: -1,
             advancePaise = Money.parseRupees(form.advance) ?: -1,
+            appDownloadLink = form.appDownloadLink,
+            invitePageLink = form.invitePageLink,
         )
         _state.update { it.copy(isSaving = true, saveFailed = false) }
         viewModelScope.launch {

@@ -13,6 +13,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.zmr.rent.AppContainer
+import com.zmr.rent.BuildConfig
 import com.zmr.rent.R
 import com.zmr.rent.data.entity.UserRole
 import com.zmr.rent.ui.addrenter.AddRenterScreen
@@ -107,6 +108,14 @@ private fun AppNavigation(container: AppContainer) {
         }
     }
 
+    // Opened from an invite link: go to the invite setup screen, which takes the code. Someone
+    // already logged in on this phone does not need an invite, so the link is dropped.
+    val pendingInvite by container.pendingInvite.collectAsStateWithLifecycle()
+    LaunchedEffect(pendingInvite) {
+        if (pendingInvite == null) return@LaunchedEffect
+        if (user == null) navController.navigate(Routes.SETUP_INVITE) else container.pendingInvite.value = null
+    }
+
     // Ignore Back when there is nowhere to go back to (for example a fast double tap).
     val goBack: () -> Unit = {
         if (navController.previousBackStackEntry != null) navController.popBackStack()
@@ -116,7 +125,11 @@ private fun AppNavigation(container: AppContainer) {
 
     NavHost(navController = navController, startDestination = Routes.WELCOME) {
         composable(Routes.WELCOME) {
-            WelcomeScreen(onLogIn = { go(Routes.LOGIN) }, onGuest = container.authRepository::continueAsGuest)
+            // Guest mode is for testing only, so it is left out of release builds.
+            WelcomeScreen(
+                onLogIn = { go(Routes.LOGIN) },
+                onGuest = container.authRepository::continueAsGuest.takeIf { BuildConfig.DEBUG },
+            )
         }
         composable(Routes.LOGIN) {
             LoginScreen(

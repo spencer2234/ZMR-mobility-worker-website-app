@@ -11,6 +11,7 @@ import com.zmr.rent.data.repository.ReportRepository
 import com.zmr.rent.data.session.SessionManager
 import com.zmr.rent.domain.IndiaTime
 import com.zmr.rent.domain.Leaders
+import kotlinx.coroutines.flow.MutableStateFlow
 import java.io.IOException
 import java.time.Clock
 
@@ -21,6 +22,9 @@ import java.time.Clock
 class AppContainer(private val context: Context) {
     val clock: Clock = IndiaTime.systemClock()
     val session = SessionManager()
+
+    /** Text of an invite link the app was opened with, waiting for the invite setup screen. */
+    val pendingInvite = MutableStateFlow<String?>(null)
 
     private val database: AppDatabase by lazy { AppDatabase.create(context) }
 

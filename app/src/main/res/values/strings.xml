@@ -226,8 +226,8 @@
 
     <!-- Payment details (founder settings) -->
     <string name="action_settings">Payment details</string>
-    <string name="settings_title">Payment details</string>
-    <string name="settings_intro">Where renters send money. Fill in UPI, a bank account, or both.</string>
+    <string name="settings_title">Company settings</string>
+    <string name="settings_intro">Where renters send money, the first payment amounts, and the links sent in invites.</string>
     <string name="settings_upi_section">UPI</string>
     <string name="field_upi_id">ZMR’s UPI ID</string>
     <string name="field_payee_name">Name renters see when paying</string>
@@ -299,4 +299,11 @@
     <string name="my_email_intro">Reports and invites you send use this email.</string>
     <string name="action_save_email">Save email</string>
     <string name="my_email_saved">Email saved.</string>
+    <string name="settings_links_section">Invite links</string>
+    <string name="field_app_download_link">App download link</string>
+    <string name="hint_app_download_link">A Google Drive share link to the APK. It goes in every invite you send.</string>
+    <string name="field_invite_page_link">Invite page link</string>
+    <string name="error_link_invalid">Type the full link, starting with https://</string>
+    <string name="invite_message_link">Hello %1$s, you have been added to the ZMR Rent app as %2$s.\n\nOn your Android phone, tap this link. It shows how to download the app and set up your account:\n%3$s</string>
+    <string name="invite_download_line">Download the app: %1$s\n\n</string>
 </resources>
